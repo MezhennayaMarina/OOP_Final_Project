@@ -4,37 +4,37 @@
 #include <string>
 #include <algorithm>
 #include "Student.h"
-#include "StudentValidator.h" // обновление после реализации StudentValidator
+#include "StudentValidator.h" // РѕР±РЅРѕРІР»РµРЅРёРµ РїРѕСЃР»Рµ СЂРµР°Р»РёР·Р°С†РёРё StudentValidator
 
 using namespace std;
 
 class StudentManager
 {
 private:
-    vector<Student> students;   // композиция
+    vector<Student> students;   // РєРѕРјРїРѕР·РёС†РёСЏ
 
     static const int BASIC_CAPACITY = 10;
 
 public:
     StudentManager();
 
-    bool addStudent(const Student& student); // обновление после реализации StudentValidator
+    bool addStudent(const Student& student); // РѕР±РЅРѕРІР»РµРЅРёРµ РїРѕСЃР»Рµ СЂРµР°Р»РёР·Р°С†РёРё StudentValidator
     bool removeStudent(int index);
     bool updateStudent(int index, const Student& updatedStudent);
 
-    // Поиск и фильтрация
+    // РџРѕРёСЃРє Рё С„РёР»СЊС‚СЂР°С†РёСЏ
     vector<Student> findBySurname(const string& surname) const;
     vector<Student> filterByGroup(const string& groupNumber) const;
 
-    // Сортировки
+    // РЎРѕСЂС‚РёСЂРѕРІРєРё
     void sortBySurname();
     void sortByAverageGrade();
 
-    // Запрос копии отдельного студента
+    // Р—Р°РїСЂРѕСЃ РєРѕРїРёРё РѕС‚РґРµР»СЊРЅРѕРіРѕ СЃС‚СѓРґРµРЅС‚Р°
     Student getStudent(int index);
-    // Запрос количества студентов
+    // Р—Р°РїСЂРѕСЃ РєРѕР»РёС‡РµСЃС‚РІР° СЃС‚СѓРґРµРЅС‚РѕРІ
     int getStudentsCount() const;
-    // Доступ ко всей коллекции через константную ссылку (только чтение)
+    // Р”РѕСЃС‚СѓРї РєРѕ РІСЃРµР№ РєРѕР»Р»РµРєС†РёРё С‡РµСЂРµР· РєРѕРЅСЃС‚Р°РЅС‚РЅСѓСЋ СЃСЃС‹Р»РєСѓ (С‚РѕР»СЊРєРѕ С‡С‚РµРЅРёРµ)
     const vector<Student>& getAllStudents() const;
 
     void setStudents(const vector<Student>& loadedStudents);

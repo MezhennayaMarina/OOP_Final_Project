@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "StudentValidator.h" // обновление после реализации StudentValidator
+#include "StudentValidator.h" // РѕР±РЅРѕРІР»РµРЅРёРµ РїРѕСЃР»Рµ СЂРµР°Р»РёР·Р°С†РёРё StudentValidator
 
 using namespace std;
 
@@ -15,29 +15,29 @@ private:
     vector<int> grades;
 
 public:
-    // Конструкторы
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
     Student();
     Student(const string& surname,
         const string& name,
         const string& groupNumber,
         const vector<int>& grades = {});
 
-    // Геттеры
-    string getSurname() const;// const запрещает методу изменять состояние объекта
+    // Р“РµС‚С‚РµСЂС‹
+    string getSurname() const;// const Р·Р°РїСЂРµС‰Р°РµС‚ РјРµС‚РѕРґСѓ РёР·РјРµРЅСЏС‚СЊ СЃРѕСЃС‚РѕСЏРЅРёРµ РѕР±СЉРµРєС‚Р°
     string getName() const;
     string getGroupNumber() const;
     vector<int> getGrades() const;
 
-    // Сеттеры
+    // РЎРµС‚С‚РµСЂС‹
     bool setSurname(const string& newSurname);
     bool setName(const string& newName);
     bool setGroupNumber(const string& newGroupNumber);
     bool setGrades(const vector<int>& newGrades);
 
-    // Работа с оценками
+    // Р Р°Р±РѕС‚Р° СЃ РѕС†РµРЅРєР°РјРё
     bool addGrade(int grade);
     void clearGrades();
 
-    // Расчет ср.арифм.оценки
+    // Р Р°СЃС‡РµС‚ СЃСЂ.Р°СЂРёС„Рј.РѕС†РµРЅРєРё
     double calculateAverageGrade() const;
 };

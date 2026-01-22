@@ -8,7 +8,7 @@
 
 using namespace std;
 
-// === Глобальные константы приложения ===
+// === Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ РєРѕРЅСЃС‚Р°РЅС‚С‹ РїСЂРёР»РѕР¶РµРЅРёСЏ ===
 const string STUDENTS_FILE_PATH = "students.txt";
 
 int main()

@@ -24,10 +24,10 @@ public:
         StudentFileHandler& fileHandler
     );
 
-    void run(); // основной цикл программы
+    void run(); // РѕСЃРЅРѕРІРЅРѕР№ С†РёРєР» РїСЂРѕРіСЂР°РјРјС‹
 
 private:
-    // === Действия пользователя ===
+    // === Р”РµР№СЃС‚РІРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ ===
     void addStudent();
     void removeStudent();
     void editStudent();
@@ -36,13 +36,13 @@ private:
     void filterByGroup();
     void sortStudents();
 
-    // === Работа с файлом ===
+    // === Р Р°Р±РѕС‚Р° СЃ С„Р°Р№Р»РѕРј ===
     void loadFromFile();
     void saveToFile();
 
-    // === Редактирование ===
+    // === Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ ===
     void editStudentField(int index);
 
-    // === Форматирование ===
+    // === Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ ===
     string formatStudent(const Student& student);
 };

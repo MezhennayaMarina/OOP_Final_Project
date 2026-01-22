@@ -1,30 +1,30 @@
 #include "StudentValidator.h"
 
-// --- Èìÿ ---
+// --- Ð˜Ð¼Ñ ---
 bool StudentValidator::isValidName(const string& name)
 {
     return !name.empty();
 }
 
-// --- Ôàìèëèÿ ---
+// --- Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ ---
 bool StudentValidator::isValidSurname(const string& surname)
 {
     return !surname.empty();
 }
 
-// --- Íîìåð ãðóïïû ---
+// --- ÐÐ¾Ð¼ÐµÑ€ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ ---
 bool StudentValidator::isValidGroupNumber(const string& groupNumber)
 {
     return !groupNumber.empty();
 }
 
-// --- Îòäåëüíàÿ îöåíêà ---
+// --- ÐžÑ‚Ð´ÐµÐ»ÑŒÐ½Ð°Ñ Ð¾Ñ†ÐµÐ½ÐºÐ° ---
 bool StudentValidator::isValidGrade(int grade)
 {
     return grade >= MIN_GRADE && grade <= MAX_GRADE;
 }
 
-// --- Âåêòîð îöåíîê ---
+// --- Ð’ÐµÐºÑ‚Ð¾Ñ€ Ð¾Ñ†ÐµÐ½Ð¾Ðº ---
 bool StudentValidator::areValidGrades(const vector<int>& grades)
 {
     for (int i = 0; i < grades.size(); i++)

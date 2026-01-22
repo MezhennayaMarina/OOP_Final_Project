@@ -1,11 +1,11 @@
 #include "StudentManager.h"
 
-// --- Конструктор ---
+// --- РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ ---
 StudentManager::StudentManager() {
     students.reserve(BASIC_CAPACITY);
 }
 
-// --- Добавление студента ---
+// --- Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‚СѓРґРµРЅС‚Р° ---
 bool StudentManager::addStudent(const Student& student)
 {
     if (!StudentValidator::isValidName(student.getName()) ||
@@ -13,15 +13,15 @@ bool StudentManager::addStudent(const Student& student)
         !StudentValidator::isValidGroupNumber(student.getGroupNumber()) ||
         !StudentValidator::areValidGrades(student.getGrades()))
     {
-        return false; // данные невалидные
+        return false; // РґР°РЅРЅС‹Рµ РЅРµРІР°Р»РёРґРЅС‹Рµ
     }
 
     students.push_back(student);
     return true;
 }
 
-// --- Удаление студента ---
-bool StudentManager::removeStudent(int index) // здесь index от 0 до size-1
+// --- РЈРґР°Р»РµРЅРёРµ СЃС‚СѓРґРµРЅС‚Р° ---
+bool StudentManager::removeStudent(int index) // Р·РґРµСЃСЊ index РѕС‚ 0 РґРѕ size-1
 {
     if (index >= students.size())
         return false;
@@ -30,7 +30,7 @@ bool StudentManager::removeStudent(int index) // здесь index от 0 до size-1
     return true;
 }
 
-// --- Обновление студента ---
+// --- РћР±РЅРѕРІР»РµРЅРёРµ СЃС‚СѓРґРµРЅС‚Р° ---
 bool StudentManager::updateStudent(int index, const Student& student)
 {
     if (index >= students.size())
@@ -41,14 +41,14 @@ bool StudentManager::updateStudent(int index, const Student& student)
         !StudentValidator::isValidGroupNumber(student.getGroupNumber()) ||
         !StudentValidator::areValidGrades(student.getGrades()))
     {
-        return false; // данные невалидные
+        return false; // РґР°РЅРЅС‹Рµ РЅРµРІР°Р»РёРґРЅС‹Рµ
     }
 
     students.at(index) = student;
     return true;
 }
 
-// --- Поиск по фамилии ---
+// --- РџРѕРёСЃРє РїРѕ С„Р°РјРёР»РёРё ---
 vector<Student> StudentManager::findBySurname(const string& surname) const
 {
     vector<Student> result;
@@ -62,7 +62,7 @@ vector<Student> StudentManager::findBySurname(const string& surname) const
     return result;
 }
 
-// --- Фильтрация по группе ---
+// --- Р¤РёР»СЊС‚СЂР°С†РёСЏ РїРѕ РіСЂСѓРїРїРµ ---
 vector<Student> StudentManager::filterByGroup(const string& groupNumber) const
 {
     vector<Student> result;
@@ -76,7 +76,7 @@ vector<Student> StudentManager::filterByGroup(const string& groupNumber) const
     return result;
 }
 
-// --- Сортировки ---
+// --- РЎРѕСЂС‚РёСЂРѕРІРєРё ---
 void StudentManager::sortBySurname()
 {
     sort(students.begin(), students.end(),
@@ -93,19 +93,19 @@ void StudentManager::sortByAverageGrade()
         });
 }
 
-// --- Получение студента ---
+// --- РџРѕР»СѓС‡РµРЅРёРµ СЃС‚СѓРґРµРЅС‚Р° ---
 Student StudentManager::getStudent(int index)
 {
-    return students.at(index); // выброс std::out_of_range при неверном индексе
+    return students.at(index); // РІС‹Р±СЂРѕСЃ std::out_of_range РїСЂРё РЅРµРІРµСЂРЅРѕРј РёРЅРґРµРєСЃРµ
 }
 
-// --- Количество студентов ---
+// --- РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СѓРґРµРЅС‚РѕРІ ---
 int StudentManager::getStudentsCount() const
 {
     return students.size();
 }
 
-// --- Доступ ко всей коллекции ---
+// --- Р”РѕСЃС‚СѓРї РєРѕ РІСЃРµР№ РєРѕР»Р»РµРєС†РёРё ---
 const vector<Student>& StudentManager::getAllStudents() const
 {
     return students;

@@ -1,6 +1,6 @@
 #include "StudentPresenter.h"
 
-// ===== Конструктор =====
+// ===== РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ =====
 StudentPresenter::StudentPresenter(
     StudentManager& manager,
     ConsoleView& view,
@@ -10,7 +10,7 @@ StudentPresenter::StudentPresenter(
 {
 }
 
-// ===== Основной цикл =====
+// ===== РћСЃРЅРѕРІРЅРѕР№ С†РёРєР» =====
 void StudentPresenter::run()
 {
     loadFromFile();
@@ -35,12 +35,12 @@ void StudentPresenter::run()
             running = false; 
             break;
         default:
-            view.showMessage("Некорректный пункт меню.");
+            view.showMessage("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РїСѓРЅРєС‚ РјРµРЅСЋ.");
         }
     }
 }
 
-// ===== Работа с файлом =====
+// ===== Р Р°Р±РѕС‚Р° СЃ С„Р°Р№Р»РѕРј =====
 void StudentPresenter::loadFromFile()
 {
     vector<Student> students = fileHandler.load();
@@ -52,17 +52,17 @@ void StudentPresenter::saveToFile()
     fileHandler.save(manager.getAllStudents());
 }
 
-// ===== Форматирование студента =====
+// ===== Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ СЃС‚СѓРґРµРЅС‚Р° =====
 string StudentPresenter::formatStudent(const Student& s) 
 {
     return
         s.getSurname() + " " +
         s.getName() +
-        " | Группа: " + s.getGroupNumber() +
-        " | Средний балл: " + to_string(s.calculateAverageGrade());
+        " | Р“СЂСѓРїРїР°: " + s.getGroupNumber() +
+        " | РЎСЂРµРґРЅРёР№ Р±Р°Р»Р»: " + to_string(s.calculateAverageGrade());
 }
 
-// ===== Добавление =====
+// ===== Р”РѕР±Р°РІР»РµРЅРёРµ =====
 void StudentPresenter::addStudent()
 {
     StudentInputData data = view.inputStudentData();
@@ -74,47 +74,47 @@ void StudentPresenter::addStudent()
     {
         Student s(data.surname, data.name, data.groupNumber, data.grades);
         manager.addStudent(s);
-        view.showMessage("Студент добавлен.");
+        view.showMessage("РЎС‚СѓРґРµРЅС‚ РґРѕР±Р°РІР»РµРЅ.");
     }
     else
     {
-        view.showMessage("Ошибка: введены некорректные данные.");
+        view.showMessage("РћС€РёР±РєР°: РІРІРµРґРµРЅС‹ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ.");
     }
 }
 
-// ===== Удаление =====
+// ===== РЈРґР°Р»РµРЅРёРµ =====
 void StudentPresenter::removeStudent()
 {
     size_t count = manager.getStudentsCount();
     if (count == 0)
     {
-        view.showMessage("Список студентов пуст.");
+        view.showMessage("РЎРїРёСЃРѕРє СЃС‚СѓРґРµРЅС‚РѕРІ РїСѓСЃС‚.");
         return;
     }
 
     showAllStudents();
     size_t index = view.inputStudentIndex(count);
-    index--; // перевод в 0-based
+    index--; // РїРµСЂРµРІРѕРґ РІ 0-based
 
     if (manager.removeStudent(index))
-        view.showMessage("Студент удалён.");
+        view.showMessage("РЎС‚СѓРґРµРЅС‚ СѓРґР°Р»С‘РЅ.");
     else
-        view.showMessage("Ошибка удаления студента.");
+        view.showMessage("РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ СЃС‚СѓРґРµРЅС‚Р°.");
 }
 
-// ===== Редактирование =====
+// ===== Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ =====
 void StudentPresenter::editStudent()
 {
     size_t count = manager.getStudentsCount();
     if (count == 0)
     {
-        view.showMessage("Список студентов пуст.");
+        view.showMessage("РЎРїРёСЃРѕРє СЃС‚СѓРґРµРЅС‚РѕРІ РїСѓСЃС‚.");
         return;
     }
 
     showAllStudents();
     size_t index = view.inputStudentIndex(count);
-    index--; // перевод в 0-based
+    index--; // РїРµСЂРµРІРѕРґ РІ 0-based
 
     editStudentField(index);
 }
@@ -128,7 +128,7 @@ void StudentPresenter::editStudentField(int index)
         view.showStudentEditMenu();
         int choice = view.getStudentEditChoice();
 
-        Student s = manager.getStudent(index); // работа с копией
+        Student s = manager.getStudent(index); // СЂР°Р±РѕС‚Р° СЃ РєРѕРїРёРµР№
 
         switch (choice)
         {
@@ -139,9 +139,9 @@ void StudentPresenter::editStudentField(int index)
             {
                 s.setSurname(surname);
                 manager.updateStudent(index, s);
-                view.showMessage("Фамилия изменена.");
+                view.showMessage("Р¤Р°РјРёР»РёСЏ РёР·РјРµРЅРµРЅР°.");
             }
-            else view.showMessage("Некорректная фамилия.");
+            else view.showMessage("РќРµРєРѕСЂСЂРµРєС‚РЅР°СЏ С„Р°РјРёР»РёСЏ.");
             break;
         }
         case 2:
@@ -151,9 +151,9 @@ void StudentPresenter::editStudentField(int index)
             {
                 s.setName(name);
                 manager.updateStudent(index, s);
-                view.showMessage("Имя изменено.");
+                view.showMessage("РРјСЏ РёР·РјРµРЅРµРЅРѕ.");
             }
-            else view.showMessage("Некорректное имя.");
+            else view.showMessage("РќРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РёРјСЏ.");
             break;
         }
         case 3:
@@ -163,9 +163,9 @@ void StudentPresenter::editStudentField(int index)
             {
                 s.setGroupNumber(group);
                 manager.updateStudent(index, s);
-                view.showMessage("Группа изменена.");
+                view.showMessage("Р“СЂСѓРїРїР° РёР·РјРµРЅРµРЅР°.");
             }
-            else view.showMessage("Некорректный номер группы.");
+            else view.showMessage("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РЅРѕРјРµСЂ РіСЂСѓРїРїС‹.");
             break;
         }
         case 4:
@@ -175,15 +175,15 @@ void StudentPresenter::editStudentField(int index)
             {
                 s.setGrades(grades);
                 manager.updateStudent(index, s);
-                view.showMessage("Оценки заменены.");
+                view.showMessage("РћС†РµРЅРєРё Р·Р°РјРµРЅРµРЅС‹.");
             }
-            else view.showMessage("Некорректные оценки.");
+            else view.showMessage("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РѕС†РµРЅРєРё.");
             break;
         }
         case 5:
             s.clearGrades();
             manager.updateStudent(index, s);
-            view.showMessage("Оценки очищены.");
+            view.showMessage("РћС†РµРЅРєРё РѕС‡РёС‰РµРЅС‹.");
             break;
 
         case 6:
@@ -193,9 +193,9 @@ void StudentPresenter::editStudentField(int index)
             {
                 s.addGrade(grade);
                 manager.updateStudent(index, s);
-                view.showMessage("Оценка добавлена.");
+                view.showMessage("РћС†РµРЅРєР° РґРѕР±Р°РІР»РµРЅР°.");
             }
-            else view.showMessage("Некорректная оценка.");
+            else view.showMessage("РќРµРєРѕСЂСЂРµРєС‚РЅР°СЏ РѕС†РµРЅРєР°.");
             break;
         }
         case 0:
@@ -203,12 +203,12 @@ void StudentPresenter::editStudentField(int index)
             break;
 
         default:
-            view.showMessage("Некорректный выбор.");
+            view.showMessage("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІС‹Р±РѕСЂ.");
         }
     }
 }
 
-// ===== Вывод =====
+// ===== Р’С‹РІРѕРґ =====
 void StudentPresenter::showAllStudents()
 {
     vector<Student> students = manager.getAllStudents();
@@ -222,14 +222,14 @@ void StudentPresenter::showAllStudents()
     view.showStudents(infos);
 }
 
-// ===== Поиск и фильтрация =====
+// ===== РџРѕРёСЃРє Рё С„РёР»СЊС‚СЂР°С†РёСЏ =====
 void StudentPresenter::searchBySurname()
 {
     string surname = view.inputSearchSurname();
     vector<Student> result = manager.findBySurname(surname);
 
     if (result.empty())
-        view.showMessage("Студенты не найдены.");
+        view.showMessage("РЎС‚СѓРґРµРЅС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹.");
     else
     {
         vector<string> infos;
@@ -247,7 +247,7 @@ void StudentPresenter::filterByGroup()
     vector<Student> result = manager.filterByGroup(group);
 
     if (result.empty())
-        view.showMessage("Студенты не найдены.");
+        view.showMessage("РЎС‚СѓРґРµРЅС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹.");
     else
     {
         vector<string> infos;
@@ -259,7 +259,7 @@ void StudentPresenter::filterByGroup()
     }
 }
 
-// ===== Сортировка =====
+// ===== РЎРѕСЂС‚РёСЂРѕРІРєР° =====
 void StudentPresenter::sortStudents()
 {
     view.showSortMenu();
@@ -269,15 +269,15 @@ void StudentPresenter::sortStudents()
     {
     case 1:
         manager.sortBySurname();
-        view.showMessage("Сортировка по фамилии выполнена.");
+        view.showMessage("РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ С„Р°РјРёР»РёРё РІС‹РїРѕР»РЅРµРЅР°.");
         break;
     case 2:
         manager.sortByAverageGrade();
-        view.showMessage("Сортировка по среднему баллу выполнена.");
+        view.showMessage("РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ СЃСЂРµРґРЅРµРјСѓ Р±Р°Р»Р»Сѓ РІС‹РїРѕР»РЅРµРЅР°.");
         break;
     case 0:
         break;
     default:
-        view.showMessage("Некорректный выбор.");
+        view.showMessage("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІС‹Р±РѕСЂ.");
     }
 }

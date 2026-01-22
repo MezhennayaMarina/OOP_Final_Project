@@ -5,7 +5,7 @@ StudentFileHandler::StudentFileHandler(const string& path)
 {
 }
 
-// ===== ◊“≈Õ»≈ »« ‘¿…À¿ =====
+// ===== –ß–¢–ï–ù–ò–ï –ò–ó –§–ê–ô–õ–ê =====
 vector<Student> StudentFileHandler::load() const
 {
     vector<Student> students;
@@ -34,13 +34,13 @@ vector<Student> StudentFileHandler::load() const
     return students;
 }
 
-// ===== «¿œ»—‹ ¬ ‘¿…À =====
+// ===== –ó–ê–ü–ò–°–¨ –í –§–ê–ô–õ =====
 void StudentFileHandler::save(const vector<Student>& students) const
 {
     ofstream fout(filePath);
     if (!fout.is_open())
     {
-        cout << "Œ¯Ë·Í‡ ÓÚÍ˚ÚËˇ Ù‡ÈÎ‡ ‰Îˇ Á‡ÔËÒË." << endl;
+        cout << "–û—à–∏–±–∫–∞ –æ—Ç–∫—Ä—ã—Ç–∏—è —Ñ–∞–π–ª–∞ –¥–ª—è –∑–∞–ø–∏—Å–∏." << endl;
         return;
     }
 
@@ -61,7 +61,7 @@ void StudentFileHandler::save(const vector<Student>& students) const
     }
 
     fout.close();
-    cout << "ƒ‡ÌÌ˚Â ÒÓı‡ÌÂÌ˚ ‚ Ù‡ÈÎ." << endl;
+    cout << "–î–∞–Ω–Ω—ã–µ —Å–æ—Ö—Ä–∞–Ω–µ–Ω—ã –≤ —Ñ–∞–π–ª." << endl;
 }
 
 

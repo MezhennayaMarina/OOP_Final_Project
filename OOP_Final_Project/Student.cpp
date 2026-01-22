@@ -1,12 +1,12 @@
 #include "Student.h"
 
-// Делегирующий конструктор по умолчанию
+// Р”РµР»РµРіРёСЂСѓСЋС‰РёР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 Student::Student()
     : Student("", "", "", {})
 {
 }
 
-// Основной конструктор
+// РћСЃРЅРѕРІРЅРѕР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 Student::Student(const string& surname,
     const string& name,
     const string& groupNumber,
@@ -16,10 +16,10 @@ Student::Student(const string& surname,
     groupNumber(groupNumber),
     grades({})
 {
-    setGrades(grades); // проверка через Validator
+    setGrades(grades); // РїСЂРѕРІРµСЂРєР° С‡РµСЂРµР· Validator
 }
 
-// Геттеры
+// Р“РµС‚С‚РµСЂС‹
 string Student::getSurname() const
 {
     return surname;
@@ -40,7 +40,7 @@ vector<int> Student::getGrades() const
     return grades;
 }
 
-// Сеттеры
+// РЎРµС‚С‚РµСЂС‹
 bool Student::setSurname(const string& newSurname)
 {
     if (!StudentValidator::isValidSurname(newSurname))
@@ -74,7 +74,7 @@ bool Student::setGrades(const vector<int>& newGrades)
 }
 
 
-// Работа с оценками
+// Р Р°Р±РѕС‚Р° СЃ РѕС†РµРЅРєР°РјРё
 bool Student::addGrade(int grade)
 {
     if (!StudentValidator::isValidGrade(grade))
@@ -88,7 +88,7 @@ void Student::clearGrades()
     grades.clear();
 }
 
-// Расчет ср.арифм.оценки
+// Р Р°СЃС‡РµС‚ СЃСЂ.Р°СЂРёС„Рј.РѕС†РµРЅРєРё
 double Student::calculateAverageGrade() const
 {
     if (grades.empty())
